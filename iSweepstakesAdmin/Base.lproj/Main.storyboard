@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,109 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nZ5-9X-qgQ">
+                                <rect key="frame" x="0.0" y="56" width="600" height="544"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Msc-7t-KQc"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="M12-ZZ-y6r"/>
+                                </connections>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Om-KC-eUi">
+                                <rect key="frame" x="0.0" y="20" width="542" height="29"/>
+                                <segments>
+                                    <segment title="Alphebetically"/>
+                                    <segment title="By Location"/>
+                                    <segment title="By Date"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sortControlSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="38c-Xq-8vl"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRr-fh-e6Q">
+                                <rect key="frame" x="544" y="19" width="32" height="30"/>
+                                <state key="normal" title="Date">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleMenuView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q4E-xx-7fF"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3N-cv-Cgz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="mYb-oj-5Vk">
+                                        <rect key="frame" x="0.0" y="46" width="600" height="162"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="457545294.43341202">
+                                            <!--2015-07-02 15:54:54 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="exf-oH-ROd">
+                                        <rect key="frame" x="0.0" y="204" width="600" height="162"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="457545303.61897397">
+                                            <!--2015-07-02 15:55:03 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kg5-C4-IoW">
+                                        <rect key="frame" x="8" y="380" width="86" height="30"/>
+                                        <state key="normal" title="New Winner">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectNewWinner:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zqi-4L-UWx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-yq-Od3">
+                                        <rect key="frame" x="102" y="380" width="86" height="30"/>
+                                        <state key="normal" title="Any Winner">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectAnyWinner:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wjD-dz-OIa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dfJ-yq-Od3" firstAttribute="top" secondItem="exf-oH-ROd" secondAttribute="bottom" constant="14" id="0aU-A0-a1x"/>
+                                    <constraint firstItem="Kg5-C4-IoW" firstAttribute="top" secondItem="exf-oH-ROd" secondAttribute="bottom" constant="14" id="6Hb-ib-Ebp"/>
+                                    <constraint firstItem="exf-oH-ROd" firstAttribute="leading" secondItem="P3N-cv-Cgz" secondAttribute="leading" id="DcC-Hq-SxT"/>
+                                    <constraint firstAttribute="trailing" secondItem="exf-oH-ROd" secondAttribute="trailing" id="RBe-4b-UcX"/>
+                                    <constraint firstItem="mYb-oj-5Vk" firstAttribute="leading" secondItem="P3N-cv-Cgz" secondAttribute="leading" id="sPR-8M-5Yh"/>
+                                    <constraint firstAttribute="trailing" secondItem="mYb-oj-5Vk" secondAttribute="trailing" id="vhx-zT-Dxj"/>
+                                    <constraint firstItem="exf-oH-ROd" firstAttribute="top" secondItem="mYb-oj-5Vk" secondAttribute="bottom" constant="-4" id="w0R-oC-pAy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P3N-cv-Cgz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="6Qh-xL-XC6"/>
+                            <constraint firstItem="4Om-KC-eUi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="8W9-eK-GWt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nZ5-9X-qgQ" secondAttribute="trailing" constant="-16" id="Eu1-KY-6K7"/>
+                            <constraint firstItem="nZ5-9X-qgQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="J48-rP-kkA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nZ5-9X-qgQ" secondAttribute="bottom" id="M0U-BW-gwD"/>
+                            <constraint firstItem="4Om-KC-eUi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="OSz-Va-ECB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P3N-cv-Cgz" secondAttribute="bottom" id="PDO-mR-vJG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P3N-cv-Cgz" secondAttribute="trailing" constant="-16" id="R7O-1e-Y8q"/>
+                            <constraint firstItem="nZ5-9X-qgQ" firstAttribute="top" secondItem="4Om-KC-eUi" secondAttribute="bottom" constant="8" id="YDt-Al-zHe"/>
+                            <constraint firstItem="P3N-cv-Cgz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Yvk-Dk-XiF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NRr-fh-e6Q" secondAttribute="trailing" constant="8" id="n0i-dB-E3w"/>
+                            <constraint firstItem="NRr-fh-e6Q" firstAttribute="leading" secondItem="4Om-KC-eUi" secondAttribute="trailing" constant="2" id="wpX-ho-9ed"/>
+                            <constraint firstItem="NRr-fh-e6Q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-1" id="xPk-lP-O3B"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="endDatePicker" destination="exf-oH-ROd" id="jC7-L5-Ka4"/>
+                        <outlet property="menuView" destination="P3N-cv-Cgz" id="YPb-cD-QQQ"/>
+                        <outlet property="sortControl" destination="4Om-KC-eUi" id="2aj-6D-wGw"/>
+                        <outlet property="startDatePicker" destination="mYb-oj-5Vk" id="9ll-0F-upO"/>
+                        <outlet property="tableView" destination="nZ5-9X-qgQ" id="Y1l-Oa-Dyk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="209" y="409"/>
         </scene>
     </scenes>
 </document>
